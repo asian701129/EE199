@@ -1,0 +1,1 @@
+cmd_/home/resolutedreamer/Dropbox/199/Try2/hello.ko := ld -r -m elf_x86_64 -T /usr/src/linux-headers-3.11.0-15-generic/scripts/module-common.lds --build-id  -o /home/resolutedreamer/Dropbox/199/Try2/hello.ko /home/resolutedreamer/Dropbox/199/Try2/hello.o /home/resolutedreamer/Dropbox/199/Try2/hello.mod.o
