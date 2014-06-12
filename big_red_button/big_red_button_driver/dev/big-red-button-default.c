@@ -20,7 +20,7 @@ int main(int argc, char **argv)
   char buf[256];
 
   /* Use a udev rule to make this device */
-  fd = open("/dev/big_red_button", O_RDWR|O_NONBLOCK);
+  fd = open("/dev/big-red-button", O_RDWR|O_NONBLOCK);
 
   if (fd < 0) {
     perror("Unable to open device");
@@ -48,15 +48,15 @@ int main(int argc, char **argv)
          printf("Ready to fire!\n");
          fflush(stdout);
       } else if (prior != BUTTON_PRESSED && buf[0] == BUTTON_PRESSED) {
-        printf("Fire!\n");
-        fflush(stdout);
+         printf("Fire!\n");
+         system("sudo shutdown now -h");
+         fflush(stdout);
       } else if (prior != LID_CLOSED && buf[0] == LID_CLOSED) {
-        printf("Stand down!\n");
-        fflush(stdout);
+         printf("Stand down!\n");
+         fflush(stdout);
       }
       prior = buf[0];
     }
     usleep(20000); /* Sleep for 20ms*/
   }
 }
-

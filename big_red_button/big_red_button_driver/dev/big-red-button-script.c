@@ -19,33 +19,18 @@ int main(int argc, char **argv)
   int i, res, desc_size = 0;
   char buf[256];
 
-  printf("We are now running the program successfully.\n");
-
   /* Use a udev rule to make this device */
-  fd = open("/dev/big_red_button", O_RDWR|O_NONBLOCK);
+  fd = open("/dev/big-red-button", O_RDWR|O_NONBLOCK);
 
-  printf("We are testing if we can open the device or not.\n");
-  
   if (fd < 0) {
-    perror("Unable to open device\n");
+    perror("Unable to open device");
     return 1;
   }
 
-  printf("It appears we are able to open the device.\n");
-
   int prior = LID_CLOSED;
 
-  printf("Now that the device is open we enter an infinite loop while we wait for input from the device.\n");
-
-  int j = 0;
-
   while (1) {
-
-    if (j == 0)
-      {
-        printf("I think this code is trying to reset the button.\n");
-      }
-/*    memset(buf, 0x0, sizeof(buf));
+    memset(buf, 0x0, sizeof(buf));
     buf[0] = 0x08;
     buf[7] = 0x02;
 
@@ -54,11 +39,6 @@ int main(int argc, char **argv)
       perror("write");
       exit(1);
     }
-*/
-    if (j == 0)
-      {
-        printf("I think this code is reading the state of the button.\n");
-      }
 
     memset(buf, 0x0, sizeof(buf));
     res = read(fd, buf, 8);
@@ -68,20 +48,15 @@ int main(int argc, char **argv)
          printf("Ready to fire!\n");
          fflush(stdout);
       } else if (prior != BUTTON_PRESSED && buf[0] == BUTTON_PRESSED) {
-        printf("Fire!\n");
-        fflush(stdout);
+         printf("Fire!\n");
+         system("sudo /usr/local/bin/big-red-button-command.sh");
+         fflush(stdout);
       } else if (prior != LID_CLOSED && buf[0] == LID_CLOSED) {
-        printf("Stand down!\n");
-        fflush(stdout);
+         printf("Stand down!\n");
+         fflush(stdout);
       }
       prior = buf[0];
     }
-
-    if (j == 0)
-      {
-        j = 1;
-      }
     usleep(20000); /* Sleep for 20ms*/
   }
 }
-

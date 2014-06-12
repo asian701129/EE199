@@ -1,1 +1,0 @@
-KERNEL=="mouse3", SYMLINK+="a-mouse-goes-squeak"

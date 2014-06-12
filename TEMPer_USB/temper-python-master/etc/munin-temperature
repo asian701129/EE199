@@ -1,0 +1,32 @@
+#!/usr/bin/python
+# encoding: utf-8
+#
+# munin-plugin for temper
+#
+# Copyright 2013 Alexander Schier <allo@laxu.de>
+#
+# This code is licensed under the GNU public license (GPL). See LICENSE.md for details.
+
+from temper.temper import TemperHandler
+import sys
+
+handler = TemperHandler()
+is_config = len(sys.argv) == 2 and sys.argv[1] == "config"
+
+if is_config:
+    print "graph_title Temperature"
+    print "graph_vlabel °C"
+    print "graph_category sensors"
+
+devices = handler.get_devices()
+for device in devices:
+    port = device.get_ports()
+    port_name = port.replace('.', '_')
+    if is_config:
+        if len(devices) > 1:
+            print "temp_" + port_name + ".label Temperature in °C (port {0:s})".format(port)
+        else:
+            print "temp_" + port_name + ".label Temperature in °C"
+    else:
+        temp = device.get_temperature()
+        print "temp_" + port_name + ".value {0:f}".format(temp)
