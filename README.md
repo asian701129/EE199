@@ -22,6 +22,6 @@ For this EE 199 Project, I created tutorials for user-mode Linux Device Drivers 
 
 ## Contact
 #### Anthony Nguyen
-* Homepage: [https://www.resolutedreamer.com](https://www.resolutedreamer.com)
+* Homepage: [http://www.resolutedreamer.com](http://www.resolutedreamer.com)
 
 Last Updated 2014/06/14
