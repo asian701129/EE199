@@ -2,6 +2,7 @@ EE199
 =====
 ## Linux Device Driver Tutorial Development
 ![Impulse](/assets/graphics/brb1.png)
+
 For this EE 199 Project, I created tutorials for user-mode Linux Device Drivers based off of existing code.
 
 ## Contributors
@@ -10,9 +11,8 @@ For this EE 199 Project, I created tutorials for user-mode Linux Device Drivers 
 * [Anthony Nguyen](https://github.com/resolutedreamer)
 
 ### Third party libraries
-*  [pyserial](https://github.com/pyserial/pyserial)
-*  [pyaudio](https://people.csail.mit.edu/hubert/pyaudio/)
-*  [scipy](https://www.scipy.org/)
+*  [The Big Red Button - OpenSensors.io](http://blog.opensensors.io/blog/2013/11/25/the-big-red-button/)
+*  [temper-python](https://github.com/padelt/temper-python)
 
 ## License 
 * This project is licensed under the Apache License - see the [LICENSE.md](https://github.com/resolutedreamer/Impulse/blob/master/LICENSE) file for details
